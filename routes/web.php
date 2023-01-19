@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/connection', function () {
+    if(DB::connection()->getDatabaseName())
+    {
+        return "Connected to database ".DB::connection()->getDatabaseName();
+    }
+    return 'Connection Failed';
+});
